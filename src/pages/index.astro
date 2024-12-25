@@ -1,14 +1,14 @@
 ---
-import Welcome from '@/components/Welcome.astro';
-import Layout from '@/layouts/Layout.astro';
-import { Button } from '@nextui-org/react';
-
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { ServiceCard } from "@/components/section-home/ServiceCard";
+import { ServiceCardSimple } from "@/components/section-home/ServiceCardSimple";
+import { WhyChooseUs } from "@/components/section-home/WhyChooseUs";
+import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout>
-	<Button color="primary" client:visible>My button</Button>
-	<Welcome />
+  <ServiceCard />
+
+  <ServiceCardSimple />
+
+  <WhyChooseUs />
 </Layout>

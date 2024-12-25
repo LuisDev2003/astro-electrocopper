@@ -1,0 +1,122 @@
+---
+import logo from "@/assets/images/favicon.svg";
+import Whatsapp from "@/components/icons/Whatsapp.astro";
+
+const navLinks = [
+  { name: "Inicio", link: "/" },
+  { name: "Sobre nosotros", link: "/sobre-nosotros" },
+  { name: "Servicios", link: "/servicios" },
+  { name: "Contactos", link: "/contactos" },
+];
+---
+
+<header class="px-3 flex items-center h-16 justify-between">
+  <div class="flex-1">
+    <img src={logo.src} alt="logo" class="h-12" />
+  </div>
+
+  <div>
+    <nav class="gap-x-5 hidden md:flex">
+      {
+        navLinks.map(({ name, link }) => (
+          <a href={link} class="hover:text-blue-500">
+            {name}
+          </a>
+        ))
+      }
+    </nav>
+
+    <button
+      type="button"
+      aria-label="Abrir menú"
+      id="open-menu"
+      class="md:hidden"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M4 6l16 0"></path>
+        <path d="M4 12l16 0"></path>
+        <path d="M4 18l16 0"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div class="flex-1 hidden md:block">
+    <a
+      href="#"
+      class="inline-flex float-end bg-blue-500 py-2 px-4 rounded-xl text-blue-50 gap-x-2"
+    >
+      <Whatsapp />
+      <span>604982792</span>
+    </a>
+  </div>
+</header>
+
+<aside
+  id="menu"
+  class="absolute top-0 inset-0 -translate-x-full transition-transform duration-300 md:hidden z-50"
+>
+  <div class="h-full relative flex items-center bg-neutral-900">
+    <button
+      type="button"
+      aria-label="Cerrar menú"
+      id="close-menu"
+      class="absolute right-3 top-3"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M18 6l-12 12"></path>
+        <path d="M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <nav class="flex flex-col w-full justify-center items-center">
+      {
+        navLinks.map(({ name, link }) => (
+          <a
+            href={link}
+            class="hover:text-blue-500 h-11 content-center hover:underline uppercase"
+          >
+            {name}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</aside>
+
+<script type="text/javascript">
+  const openMenu = document.querySelector("#open-menu");
+  const closeMenu = document.querySelector("#close-menu");
+  const menu = document.querySelector("#menu");
+
+  openMenu.addEventListener("click", () => {
+    menu.classList.remove("-translate-x-full");
+    menu.classList.add("translate-x-0");
+  });
+
+  closeMenu.addEventListener("click", () => {
+    menu.classList.remove("translate-x-0");
+    menu.classList.add("-translate-x-full");
+  });
+</script>
